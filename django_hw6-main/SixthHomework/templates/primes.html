@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <input type="number" name="start" placeholder="Початок">
+        <input type="number" name="end" placeholder="Кінець">
+        <button type="submit">Знайти прості числа</button>
+    </form>
+    {% if primes %}
+        <p>Результат: {{ primes|join:", " }}</p>
+    {% endif %}
+</body>
+</html>

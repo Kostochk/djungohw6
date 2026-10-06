@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table { border-collapse: collapse; margin-top: 20px; }
+        td, th { border: 1px solid black; padding: 10px; text-align: center; }
+    </style>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <input type="number" name="start" placeholder="Від (наприклад, 2)">
+        <input type="number" name="end" placeholder="До (наприклад, 5)">
+        <button type="submit">Генерувати</button>
+    </form>
+
+    {% if range %}
+        <table>
+            <tr>
+                <th>*</th>
+                {% for i in nums %} <th>{{ i }}</th> {% endfor %}
+            </tr>
+            {% for i in range %}
+            <tr>
+                <th>{{ i }}</th>
+                {% for j in nums %}
+                    <td>{{ i|add:0 }} × {{ j }} = <b>{% widthratio i 1 j %}</b></td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

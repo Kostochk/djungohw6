@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Підписка на новини</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="first_name" placeholder="Ім'я"><br>
+        <input type="text" name="last_name" placeholder="Прізвище"><br>
+        <input type="number" name="age" placeholder="Вік"><br>
+        <select name="gender">
+            <option value="Чоловік">Чоловік</option>
+            <option value="Жінка">Жінка</option>
+        </select><br>
+        <input type="email" name="email" placeholder="Email"><br>
+        <button type="submit">Підписатися</button>
+    </form>
+
+    {% if user %}
+        <hr>
+        <h2>Дані підписки:</h2>
+        <ul>
+            <li>ПІБ: {{ user.first_name }} {{ user.last_name }}</li>
+            <li>Вік: {{ user.age }}</li>
+            <li>Стать: {{ user.gender }}</li>
+            <li>Email: {{ user.email }}</li>
+        </ul>
+    {% endif %}
+</body>
+</html>
